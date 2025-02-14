@@ -1,0 +1,25 @@
+<div class="w-full h-screen bg-gradient-to-br from-indigo-600 to-purple-400 flex flex-col items-center pt-36"> 
+  <div class="flex items-end gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 text-indigo-100">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+    </svg>
+
+    <h1 class="text-7xl text-indigo-50 font-[matcha]"> Tiktok on </h1>
+
+    <%= image_tag("rails.png", class: "h-20") %>
+  </div>
+
+  <div class="grid grid-cols-2 mt-8">
+    <div class="relative">
+      <%= image_tag("happy-lady.jpg", class: "h-[50vh] w-full object-cover rounded-r-full") %>
+      <%= image_tag "fire.png", class: "absolute bottom-8 right-10 w-36 rotate-15" %>
+      <%= image_tag "laugh.png", class: "absolute bottom-8 left-40 w-36 -rotate-15" %>
+    </div>
+    <div class="w-full flex flex-col items-center pt-16">
+      <div class="max-w-lg w-full rounded-lg h-96 bg-gray-200 flex items-center justify-center gap-4"> 
+        <%= link_to "Sign in", new_user_session_path, class: "px-3 py-2 rounded-lg bg-blue-500 text-blue-50 text-xl hover:scale-105" %>
+        <%= link_to "Create account", new_user_registration_path, class: "px-3 py-2 rounded-lg bg-gray-900 text-gray-50 text-xl hover:scale-105" %>
+      </div>
+    </div>
+  </div>
+</div>
