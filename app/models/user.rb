@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :posts
   has_many :views, class_name: "Post::View"
   has_many :viewed_posts, through: :views, source: :post
+  has_many :likes, class_name: "Post::Like"
 end

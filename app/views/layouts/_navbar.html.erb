@@ -1,12 +1,22 @@
-<div class="w-full h-16 fixed top-0 bg-gray-700"> 
+<div class="w-full h-16 fixed top-0 bg-gray-700 z-[1000]"> 
   <div class="h-full max-w-7xl w-full mx-auto px-4 flex items-center justify-between"> 
     <%= link_to "Tiktok-Rails", "/", class: "text-xl text-gray-100" %>
     <% if current_user %>
       <div class="flex items-center gap-4">
-        <%= link_to "Create post", new_post_path, class: "px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 text-indigo-50" %>
-        <span class="text-xl text-gray-100"> <%= current_user.username %> </span>
-        <%= link_to "Sign out", destroy_user_session_path, class: "px-3 py-2 rounded-lg text-lg text-gray-100 bg-gray-900 border-2 border-gray-100",
-          data: { turbo_method: :delete } %>
+        <%= link_to new_post_path, class: "px-3 py-2 rounded-full md:rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 text-indigo-50 flex items-center gap-2 hover:scale-95" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+          <span class="font-semibold hidden md:inline-block"> Upload video </span>
+        <% end %>
+        
+        <div class="relative" data-controller="dropdown">
+          <span class="text-xl text-gray-100 cursor-pointer" data-action="click->dropdown#toggle"> <%= current_user.username %> </span>
+          <div class="p-2 rounded-lg w-64 h-64 bg-gray-500 absolute top-10 right-0 flex flex-col hidden" data-dropdown-target="menu">
+            <%= link_to "Sign out", destroy_user_session_path, class: "px-3 py-2 rounded-lg text-lg text-gray-100 bg-gray-900 border-2 border-gray-100 mt-auto ml-auto",
+              data: { turbo_method: :delete } %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

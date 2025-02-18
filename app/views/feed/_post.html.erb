@@ -1,7 +1,22 @@
-<div class="w-full lg:w-[40vw] h-screen flex flex-col justify-center items-center">
-  <p class="text-2xl text-gray-100"> <%= post.caption %> </p>
+<div class="w-full max-w-lg h-screen mb-auto flex flex-col items-center">
   <% if post.video.attached? %>
-    <%= video_tag(post.video, controls: true, class: "w-full h-full") %>
+    <div class="w-full h-full relative">
+      <%= video_tag(post.video, controls: true, class: "aspect-9/16") %>
+      <div class="absolute bottom-36 w-full left-0 flex justify-between px-4">
+        <div class="flex flex-col gap-1">
+          <span class="text-xl text-gray-100"> 
+            <%=  post.user.username %>
+          </span>
+          <span class="text-xl text-gray-100"> 
+            <%=  post.caption %>
+          </span>
+        </div>
+
+        <div class="flex items-end">
+          <%= render "like", post: post, user: current_user %>
+        </div>
+      </div>
+    </div>
   <% else %>
     <p class="text-xl text-gray-100"> No video found <p>
   <% end %>
