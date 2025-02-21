@@ -14,9 +14,9 @@ if !user
   user = User.create(username: "indigotest123", email: "indigotest123@gmail.com", password: "123456")
 end
 
-test_file_path = Rails.root.join("test/videos/dogshort.mov")
+test_file_path = Rails.root.join("test/videos/coffee.mp4")
 
 100.times do |n|
-  post = user.posts.create(caption: "Test tiktok post #{n}", description: "Seeded tiktok data")
+  post = user.posts.create(caption: "Coffee post #{n}", description: "Seeded tiktok data")
   post.video.attach(io: File.open(test_file_path), filename: "video.mp4")
 end

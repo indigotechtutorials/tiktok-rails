@@ -1,4 +1,4 @@
-<div id="<%= dom_id(post, :like) %>">
+<div id="<%= dom_id(post, :like) %>" class="hover:scale-105">
   <% if like = current_user.likes.find_by(post_id: post) %>
     <%= link_to post_like_path(post, like), class: "hover:scale-105", data: { turbo_method: :delete } do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 fill-red-500">
