@@ -10,9 +10,17 @@
           <span class="font-semibold hidden md:inline-block"> Upload video </span>
         <% end %>
         
-        <div class="relative" data-controller="dropdown">
-          <span class="text-xl text-gray-100 cursor-pointer" data-action="click->dropdown#toggle"> <%= current_user.username %> </span>
-          <div class="p-2 rounded-lg w-64 h-64 bg-gray-500 absolute top-10 right-0 flex flex-col hidden" data-dropdown-target="menu">
+        <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
+          <%= link_to "#", data: { action: "dropdown#toggle" } do %>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag(current_user.avatar.variant(:navbar), class: "w-14 h-14 rounded-full object-cover border hover:brightness-75 border-gray-100") %>
+            <% else %>
+              <span class="text-xl text-gray-100"> <%= current_user.username %> </span>
+            <% end %>
+          <% end %>
+          <div class="p-2 rounded-lg w-64 h-64 bg-gray-500 absolute top-10 right-0 flex flex-col gap-4 hidden" data-dropdown-target="menu">
+            <%= link_to "Your Profile", profile_path(current_user), class: "text-xl text-gray-100 hover:underline mx-auto" %>
+            <%= link_to "Account Settings", edit_user_registration_path, class: "text-xl text-gray-100 hover:underline mx-auto" %>
             <%= link_to "Sign out", destroy_user_session_path, class: "px-3 py-2 rounded-lg text-lg text-gray-100 bg-gray-900 border-2 border-gray-100 mt-auto ml-auto",
               data: { turbo_method: :delete } %>
           </div>

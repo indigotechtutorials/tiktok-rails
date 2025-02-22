@@ -4,9 +4,9 @@
       <%= video_tag(post.video, controls: true, class: "aspect-9/16") %>
       <div class="absolute bottom-36 w-full left-0 flex justify-between px-4">
         <div class="flex flex-col gap-1">
-          <span class="text-xl text-gray-100"> 
-            <%=  post.user.username %>
-          </span>
+          <%= link_to profile_path(post.user), class: "text-xl text-gray-100 hover:underline" do %>
+            <%= post.user.username %>
+          <% end %>
           <span class="text-xl text-gray-100"> 
             <%=  post.caption %>
           </span>

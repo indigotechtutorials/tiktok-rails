@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @post = Post.find(params.expect(:id))
+    @post.views.find_or_create_by(user_id: current_user.id) if @post
   end
 
   # GET /posts/new

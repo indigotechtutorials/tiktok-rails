@@ -8,4 +8,12 @@ export default class extends Controller {
     e.preventDefault()
     this.menuTarget.classList.toggle("hidden")
   }
+
+  closeUnlessDropdown(e) {
+    if (!this.element.contains(e.target)) {
+      if (!this.menuTarget.classList.contains("hidden")) {
+        this.menuTarget.classList.add("hidden")
+      }
+    }
+  }
 }
